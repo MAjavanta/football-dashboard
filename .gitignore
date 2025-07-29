@@ -11,3 +11,6 @@ wheels/
 
 # Production secrets
 .env
+
+# Logs
+app.log
