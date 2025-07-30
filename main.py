@@ -12,8 +12,16 @@ match_list = []
 def main():
     logger = logging.getLogger(__name__)
     logger.info("Starting App run")
-    comp_list = get_competitions()
-    match_list = get_matches(comp_list[1], 2024, 1)
+    try:
+        comp_list = get_competitions()
+    except KeyError as e:
+        logger.error("Critical data missing: %s", e)
+        raise
+    try:
+        match_list = get_matches(comp_list[1], 2024, 1)
+    except KeyError as e:
+        logger.error("Critical missing data: %s", e)
+        raise
     for match in match_list:
         print(match.model_dump_json())
     logger.info("App run complete")
