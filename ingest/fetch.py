@@ -107,6 +107,9 @@ def get_matches(comp: Competition, season: int, matchday: int) -> list[Match]:
         season -- the season of that competition we want to look at (the calendar year it kicked off)
         matchday -- the matchday/matchweek for the matches we want to look at
 
+    Raises:
+        KeyError: raised when response to API call does not contain matches
+
     Returns:
         a list of Match objects containing details related to the Match, the Competition, and involves Teams
     """
